@@ -19,15 +19,15 @@ enum ButtonSize {
     
     var width: CGFloat {
         switch self {
-            case .number: return 50
-            case .function: return 100
+        case .number: return 50
+        case .function: return 100
         }
     }
     
     var height: CGFloat {
         switch self {
-            case .number: return 50
-            case .function: return 100
+        case .number: return 50
+        case .function: return 100
         }
     }
 }
