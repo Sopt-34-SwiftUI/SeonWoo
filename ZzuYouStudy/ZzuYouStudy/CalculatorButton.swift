@@ -13,14 +13,24 @@ struct CalculatorButton: View {
     let color: Color
     let action: () -> Void
     
+    @State private var isPressed: Bool = false
+    
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            withAnimation(.bouncy(duration: 0.2)) {
+                isPressed = true
+            }
+            action()
+            withAnimation(.interpolatingSpring(duration: 0.2)) {
+                isPressed = false
+            }
+        }) {
             Text(label)
-                .font(.title)
-                .foregroundColor(.white)
-                .frame(width: 50, height: 50)
+                .font(.largeTitle)
+                .frame(width: isPressed ? 45 : 50, height: isPressed ? 45 : 50)
                 .background(color)
-                .cornerRadius(25)
+                .foregroundColor(.white)
+                .cornerRadius(10)
         }
     }
 }
